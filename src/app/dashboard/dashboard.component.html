@@ -10,7 +10,7 @@
 
     <div class="text-center">
       <img [src]="userProfile?.avatar_url" class="rounded" class="img-fluid" alt="userImage">
-      <h3 class="font-weight-bold">{{userProfile.name }}</h3>
+      <h3 class="font-weight-bold">{{ userProfile.name }}</h3>
 
       <div class="row">
         <div *ngIf="userProfile.company" class="col-lg-12">
@@ -25,17 +25,26 @@
 
       <div class=row>
         <div class=col-lg-3>
-          <h5 class="font-weight-bold"> Repositories - {{ userProfile.public_repos }} </h5>
+          <h2 class="font-weight-bold"><span class="badge badge-pill badge-info"> Repositories - {{
+              userProfile.public_repos }} </span></h2>
         </div>
+
         <div class=col-lg-3>
-          <h5 class="font-weight-bold"> Gists Count - {{ userProfile.public_gists }} </h5>
+          <h2 class="font-weight-bold"><span class="badge badge-pill badge-info"> Gists Count - {{
+              userProfile.public_gists }} </span></h2>
         </div>
+
         <div class=col-lg-3>
-          <h5 class="font-weight-bold"> Followers - {{ userProfile.followers }} </h5>
+          <h2 class="font-weight-bold"><span class="badge badge-pill badge-info"> Followers - {{ userProfile.followers
+              }}
+            </span></h2>
         </div>
+
         <div class=col-lg-3>
-          <h5 class="font-weight-bold"> Following - {{ userProfile.following }} </h5>
+          <h2 class="font-weight-bold"><span class="badge badge-pill badge-info"> Following - {{ userProfile.following
+              }} </span></h2>
         </div>
+
       </div>
     </div>
 
