@@ -1,0 +1,80 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="assets/Images/github-icon.png" width="50" height="50" alt="git_logo">
+  </a>
+  <button type="button" class="btn btn-primary"><a (click)="goBack()">Go Back</a></button>
+</nav>
+
+<br>
+
+<div class="container">
+
+  <form>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="username" class="form-control" name="username" placeholder="enter the username and hit the search button">
+    </div>
+  </form>
+
+  <button type="button" class="btn btn-primary"><a (click)="findProfile()">Search</a></button>
+
+  <br>
+  <br>
+
+  <div *ngIf="profile">
+
+    <div class="text-center">
+      <img [src]="profile?.avatar_url" class="rounded" class="img-fluid" alt="userImage">
+      <h3 class="font-weight-bold">{{profile.name }}</h3>
+      <br>
+      <div class=row>
+        <div class=col-lg-4>
+          <h3 class="font-weight-bold"><span class="badge badge-pill badge-info">Repositories - {{ profile.public_repos
+              }}</span></h3>
+        </div>
+        <div class=col-lg-4>
+          <h3 class="font-weight-bold"><span class="badge badge-pill badge-info">Followers - {{ profile.followers }}</span></h3>
+        </div>
+        <div class=col-lg-4>
+          <h3 class="font-weight-bold"><span class="badge badge-pill badge-info">Following - {{ profile.following }}</span></h3>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <button type="button" class="btn btn-danger btn-lg btn-block">REPOSITORIES</button>
+
+    <br>
+
+    <div class="row">
+      <div *ngFor="let repo of repositories" class="col-sm-12 col-md-6 col-lg-4">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h4>
+                <a class=" text-capitalize" class="card-title" [href]="repo.html_url" target="_blank" rel="noopener">{{repo.name}}</a>
+              </h4>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Forks - {{ repo.forks_count }} </p>
+                </div>
+                <div class="col-sm-6">
+                  <p>Watchers - {{ repo.watchers_count }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<ngx-spinner></ngx-spinner>

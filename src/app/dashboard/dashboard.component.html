@@ -1,0 +1,103 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="assets/Images/github-icon.png" width="50" height="50" alt="git_logo">
+  </a>
+  <button type="button" class="btn btn-primary"><a (click)="logout()">LOG OUT</a></button>
+</nav>
+
+<div class="container">
+  <div *ngIf="userProfile">
+
+    <div class="text-center">
+      <img [src]="userProfile?.avatar_url" class="rounded" class="img-fluid" alt="userImage">
+      <h3 class="font-weight-bold">{{userProfile.name }}</h3>
+
+      <div class="row">
+        <div *ngIf="userProfile.company" class="col-lg-12">
+          <h5 class="font-weight-bold">Works At - {{ userProfile.company }}</h5>
+        </div>
+        <div *ngIf="userProfile.bio" class="col-lg-12">
+          <h5 class="font-weight-bold">Bio - {{ userProfile.bio }}</h5>
+        </div>
+      </div>
+
+      <br>
+
+      <div class=row>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Repositories - {{ userProfile.public_repos }} </h5>
+        </div>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Gists Count - {{ userProfile.public_gists }} </h5>
+        </div>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Followers - {{ userProfile.followers }} </h5>
+        </div>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Following - {{ userProfile.following }} </h5>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+
+      <div class="col-lg-6">
+        <button type="button" class="btn btn-danger btn-lg btn-block">FOLLOWERS</button>
+        <br>
+        <div *ngFor="let follower of followers" class="col-lg-12">
+          <h2><span class="badge badge-pill badge-info"><a [routerLink]="['/follower-view',follower.login]">{{
+                follower.login }}</a></span></h2>
+        </div>
+        <br>
+      </div>
+
+      <div class="col-lg-6">
+        <button type="button" class="btn btn-danger btn-lg btn-block">FOLLOWING</button>
+        <br>
+        <div *ngFor="let follower of following" class="col-lg-12">
+          <h2><span class="badge badge-pill badge-info"><a [routerLink]="['/follower-view',follower.login]">{{
+                follower.login }}</a></span></h2>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <button type="button" class="btn btn-danger btn-lg btn-block">REPOSITORIES</button>
+
+    <br>
+
+    <div class="row">
+      <div *ngFor="let repo of repositories" class="col-sm-12 col-md-6 col-lg-4">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h4>
+                <a class=" text-capitalize" class="card-title" [href]="repo.html_url" target="_blank" rel="noopener">{{repo.name}}</a>
+              </h4>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6>Forks - {{ repo.forks_count }} </h6>
+                </div>
+                <div class="col-sm-6">
+                  <h6>Watchers - {{ repo.watchers_count }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ngx-spinner></ngx-spinner>

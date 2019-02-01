@@ -1,0 +1,105 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="assets/Images/github-icon.png" width="50" height="50" alt="git_logo">
+  </a>
+  <button type="button" class="btn btn-primary"><a (click)="goBack()">Go Back</a></button>
+</nav>
+
+<br>
+
+<div class="container">
+  <div *ngIf="currentFollower">
+
+    <div class="text-center">
+      <img [src]="currentFollower?.avatar_url" class="rounded" class="img-fluid" alt="userImage">
+      <h3 class="font-weight-bold">{{ currentFollower.name }}</h3>
+
+      <div class="row">
+        <div *ngIf="currentFollower.company" class="col-lg-12">
+          <h5 class="font-weight-bold">Works At - {{ currentFollower.company }}</h5>
+        </div>
+        <div *ngIf="currentFollower.bio" class="col-lg-12">
+          <h5 class="font-weight-bold">Bio - {{ currentFollower.bio }}</h5>
+        </div>
+      </div>
+
+      <br>
+
+      <div class=row>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Repositories - {{ currentFollower.public_repos }} </h5>
+        </div>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Gists Count - {{ currentFollower.public_gists }} </h5>
+        </div>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Followers - {{ currentFollower.followers }} </h5>
+        </div>
+        <div class=col-lg-3>
+          <h5 class="font-weight-bold"> Following - {{ currentFollower.following }} </h5>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <button type="button" class="btn btn-danger btn-lg btn-block">REPOSITORIES</button>
+
+    <br>
+
+    <div class="row">
+      <div *ngFor="let repo of currentFollowerRepos" class="col-sm-12 col-md-6 col-lg-4">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h4>
+                <a class=" text-capitalize" class="card-title" [href]="repo.html_url" target="_blank" rel="noopener">{{repo.name}}</a>
+              </h4>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Forks - {{ repo.forks_count }} </p>
+                </div>
+                <div class="col-sm-6">
+                  <p>Watchers - {{ repo.watchers_count }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let repo of repositories" class="col-sm-12 col-md-6 col-lg-4">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h4>
+                <a class=" text-capitalize" class="card-title" [href]="repo.html_url" target="_blank" rel="noopener">{{repo.name}}</a>
+              </h4>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6>Forks - {{ repo.forks_count }} </h6>
+                </div>
+                <div class="col-sm-6">
+                  <h6>Watchers - {{ repo.watchers_count }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ngx-spinner></ngx-spinner>
