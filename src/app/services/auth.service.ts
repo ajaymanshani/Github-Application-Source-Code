@@ -63,10 +63,6 @@ export class AuthService {
     );
   }
 
-  setUser(user) {
-    this.user = user;
-  }
-
   isLoggedIn() {
     return this.userDetails != null;
   }
