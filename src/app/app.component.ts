@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
       this.userDataSharedService.shareUserDetail(this.user);
-      this.authService.setUser(this.user);
       this.authService.setUserInfoInLocalStorage(this.user.additionalUserInfo.username);
     }
   }
