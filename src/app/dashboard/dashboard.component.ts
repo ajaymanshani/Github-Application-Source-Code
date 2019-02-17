@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
-import { UserDataSharedService } from '../services/user-data.shared.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -18,7 +17,7 @@ export class DashboardComponent implements OnInit {
   following: any[];
   followers: any[];
 
-  constructor(public auth: AuthService, private userDataSharedService: UserDataSharedService, private router: Router, private spinner: NgxSpinnerService) {
+  constructor(public auth: AuthService, private router: Router, private spinner: NgxSpinnerService) {
   }
 
   getProfile() {
