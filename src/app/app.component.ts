@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { UserDataSharedService } from './services/user-data.shared.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +10,12 @@ import { UserDataSharedService } from './services/user-data.shared.service';
 export class AppComponent implements OnInit {
   user: any;
 
-  constructor(private authService: AuthService, private router: Router, private userDataSharedService: UserDataSharedService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
-      this.userDataSharedService.shareUserDetail(this.user);
       this.authService.setUserInfoInLocalStorage(this.user.additionalUserInfo.username);
     }
   }
