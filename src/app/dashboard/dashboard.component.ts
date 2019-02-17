@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -12,7 +11,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class DashboardComponent implements OnInit {
 
   userProfile: any = {};
-  user: any = {};
   repositories: any[];
   following: any[];
   followers: any[];
