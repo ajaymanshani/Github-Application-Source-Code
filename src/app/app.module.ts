@@ -19,7 +19,6 @@ import { AuthService } from './services/auth.service';
 import { SearchService } from './services/search.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { SearchDashboardComponent } from './search-dashboard/search-dashboard.component';
-import { UserDataSharedService } from './services/user-data.shared.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FollowerViewComponent } from './follower-view/follower-view.component';
 
@@ -42,7 +41,7 @@ import { FollowerViewComponent } from './follower-view/follower-view.component';
     FormsModule,
     NgxSpinnerModule,
   ],
-  providers: [AuthGuard, UserDataSharedService],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
