@@ -48,16 +48,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.userDataSharedService.user;
-    console.log(this.user);
-    this.userDataSharedService.getUser
-      .subscribe(
-        (data) => {
-          this.user = data;
-          console.log(data);
-          this.getProfile();
-        }
-      );
     this.getProfile();
 
     this.spinner.show();
